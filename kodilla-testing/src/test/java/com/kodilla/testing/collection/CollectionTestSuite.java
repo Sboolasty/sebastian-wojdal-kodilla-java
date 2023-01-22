@@ -1,8 +1,10 @@
 package com.kodilla.testing.collection;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.*;
+import javax.management.ListenerNotFoundException;
 import java.util.*;
-//import com.kodilla.testing.collection.OddNumbersExterminator;
+import com.kodilla.testing.collection.*;
 
 public class CollectionTestSuite {
     @Before
@@ -14,14 +16,15 @@ public class CollectionTestSuite {
         System.out.println("Test case: end");
     }
     @Test
-    public void testOddNumbersExterminatorEmptyList(){
-        //Given
+    public void testOddNumbersExterminatorEmptyList() {
+         //Given
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
         ArrayList<Integer> emptyList=new ArrayList<Integer>();
+        Integer numberList[] = new Integer[]{};
         //When
         ArrayList<Integer> listNumbers=OddNumbersExterminator.exterminate(emptyList);
-        System.out.println("Testing"+listNumbers);
         //Then
-        Assert.assertEquals(emptyList,listNumbers);
+        Assertions.assertTrue(exterminator.exterminate(emptyList).isEmpty());
     }
     @Test
     public void testOddNumbersExterminatorNormalList(){
@@ -31,7 +34,6 @@ public class CollectionTestSuite {
 
         //When
         ArrayList<Integer> listNumbers=OddNumbersExterminator.exterminate(list);
-        System.out.println("Testing"+listNumbers);
         //Then
         Assert.assertEquals(oddList,listNumbers);
     }
