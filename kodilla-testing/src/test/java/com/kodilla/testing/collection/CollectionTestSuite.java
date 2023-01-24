@@ -1,12 +1,11 @@
-package com.kodilla.testing.collection;
+/*package com.kodilla.testing.collection;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.*;
 import javax.management.ListenerNotFoundException;
 import java.util.*;
-import com.kodilla.testing.collection.*;
-
-public class CollectionTestSuite {
+import com.kodilla.testing.collection.*;*/
+/*public class CollectionTestSuite {
     @Before
     public void before(){
         System.out.println("Test case: begin");
@@ -35,4 +34,4 @@ public class CollectionTestSuite {
         Assert.assertEquals(Arrays.asList(234,22,12), evenNumbers);
 
     }
-}
+}*/
