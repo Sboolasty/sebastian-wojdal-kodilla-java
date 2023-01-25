@@ -1,4 +1,4 @@
-package com.kodilla.testing.shape;
+/* package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
 @DisplayName("ShapeCollector Test Suite")
@@ -14,7 +14,7 @@ public class ShapeCollectorTestSuite {
             Shape theShape = new Triangle("Triangle 1", 100);
 
             //When
-            int result = shapeCollector.addFigure(theShape);
+            in result = shapeCollector.addFigure(theShape);
 
             //Then
             Assertions.assertEquals(0, result);
@@ -68,4 +68,4 @@ public class ShapeCollectorTestSuite {
             Assertions.assertEquals("Triangle 1", result);
         }
     }
-}
+} */

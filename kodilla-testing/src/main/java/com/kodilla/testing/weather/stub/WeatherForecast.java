@@ -30,11 +30,15 @@ public class WeatherForecast {
         return average/temperatures.getTemperatures().size();
     }
     public double medianTemperature(){
-        ArrayList<Double> values = new ArrayList<>();
-        for (Map.Entry<String, Double> entry : temperatures.getTemperatures().entrySet()) {
-            values.add(entry.getValue());
+        double median;
+        double aver;
+        List<Double> medianList = new ArrayList<>(temperatures.getTemperatures().values());
+        medianList.sort(Comparator.naturalOrder());
+
+        if (medianList.size() % 2 == 0) {
+            return medianList.get(medianList.size()/2) + medianList.get((medianList.size() / 2) - 1);
+        } else {
+            return medianList.get(medianList.size() / 2);
         }
-        values.sort(Comparator.naturalOrder());
-        return ((values.size() % 2) == 0) ? values.get(values.size() / 2) / 2 + values.get(values.size() / 2 - 1) / 2 : values.get(values.size() / 2);
     }
 }
