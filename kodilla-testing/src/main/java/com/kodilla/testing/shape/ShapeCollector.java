@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class ShapeCollector {
     ArrayList<Shape> shapes = new ArrayList<>();
-    int addFigure(Shape shape) {
+
+    public void addFigure(Shape shape) {
         shapes.add(shape);
-        return shapes.contains(shape) ? 0 : -1;
     }
 
-    int removeFigure(Shape shape) {
+    public void removeFigure(Shape shape) {
         shapes.remove(shape);
-        return shapes.contains(shape) ? -1 : -0;
     }
+
+
 
     Shape getFigure(int n) {
         return shapes.get(n-1);
@@ -24,7 +25,6 @@ public class ShapeCollector {
         for (Shape shape : shapes) {
             if (i-- == 0)
                 result.append(shape.getShapeName());
-            else
                 result.append(shape.getShapeName()).append(", ");
         }
         return result.toString();
