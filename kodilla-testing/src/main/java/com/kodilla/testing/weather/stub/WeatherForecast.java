@@ -29,8 +29,7 @@ public class WeatherForecast {
         }
         return average/temperatures.getTemperatures().size();
     }
-    public double medianTemperature(){
-        double median;
+    public double medianTemperature() {
         List<Double> medianList = new ArrayList<>(temperatures.getTemperatures().values());
         medianList.sort(Comparator.naturalOrder());
 
