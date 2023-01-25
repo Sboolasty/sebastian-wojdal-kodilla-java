@@ -31,7 +31,6 @@ public class WeatherForecast {
     }
     public double medianTemperature(){
         double median;
-        double aver;
         List<Double> medianList = new ArrayList<>(temperatures.getTemperatures().values());
         medianList.sort(Comparator.naturalOrder());
 
