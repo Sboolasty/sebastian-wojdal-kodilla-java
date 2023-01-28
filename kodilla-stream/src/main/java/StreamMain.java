@@ -1,17 +1,24 @@
-package com.kodilla.stream;
+package com.kodilla.stream.forumuser;
+
+import com.kodilla.stream.forumuser.*;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
-
     public static void main(String[] args) {
 
-        PoemBeautifier PoemBeautifier = new PoemBeautifier();
-        String beauty1 = PoemBeautifier.beautify("Poem", s -> "ABC" + s + "ABC");
-        String beauty2 = PoemBeautifier.beautify("Poem", s -> s.toUpperCase());
-        String beauty3 = PoemBeautifier.beautify("Poem", s -> s.replace('e', 'E'));
-        String beauty4 = PoemBeautifier.beautify("Poem", s -> "O_O" + s + "^^");
-        System.out.println(beauty1);
-        System.out.println(beauty2);
-        System.out.println(beauty3);
-        System.out.println(beauty4);
+        Forum forum = new Forum();
+
+        Map<Integer, ForumUser> resultUsers = forum.getUserList().stream()
+                .filter(forumUser -> forumUser.getSex() == 'M')
+                .filter(forumUser -> forumUser.countAge() >= 20)
+                .filter(forumUser -> forumUser.getPosts() >= 1)
+                .collect(Collectors.toMap(ForumUser::getID, forumUser -> forumUser));
+
+        resultUsers.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
+
     }
 }
