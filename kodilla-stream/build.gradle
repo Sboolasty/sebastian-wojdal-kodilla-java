@@ -17,6 +17,6 @@ dependencies {
     testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '5.0.0'
 }
 
-test {
+def test = test {
     useJUnitPlatform()
 }
