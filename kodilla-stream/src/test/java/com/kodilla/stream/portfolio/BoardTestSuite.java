@@ -1,8 +1,10 @@
 package com.kodilla.stream.portfolio;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -76,7 +78,7 @@ public class BoardTestSuite {
         return project;
     }
 
-    @Before
+    @BeforeEach
     public void createProject() {
         project = prepareTestData();
     }
@@ -85,7 +87,7 @@ public class BoardTestSuite {
     public void testAddTaskList() {
 
         //Then
-        Assert.assertEquals(3, project.getTaskLists().size());
+        Assertions.assertEquals(3, project.getTaskLists().size());
     }
 
 
@@ -99,7 +101,7 @@ public class BoardTestSuite {
                 .count();
 
         //Then
-        Assert.assertEquals(2, taskCounter);
+        Assertions.assertEquals(2, taskCounter);
 
     }
 
@@ -114,8 +116,8 @@ public class BoardTestSuite {
                 .collect(toList());
 
         //Then
-        Assert.assertEquals(1, outdatedTasks.size());
-        Assert.assertEquals("HQLs for analysis", outdatedTasks.get(0).getTitle());
+        Assertions.assertEquals(1, outdatedTasks.size());
+        Assertions.assertEquals("HQLs for analysis", outdatedTasks.get(0).getTitle());
 
     }
 
@@ -131,7 +133,7 @@ public class BoardTestSuite {
                 .count();
 
         //Then
-        Assert.assertEquals(2, longTasks);
+        Assertions.assertEquals(2, longTasks);
     }
 
 
@@ -147,6 +149,6 @@ public class BoardTestSuite {
                 .getAsDouble();
 
         //Then
-        Assert.assertEquals(10.0, average, 0.0001);
+        Assertions.assertEquals(10.0, average, 0.0001);
     }
 }

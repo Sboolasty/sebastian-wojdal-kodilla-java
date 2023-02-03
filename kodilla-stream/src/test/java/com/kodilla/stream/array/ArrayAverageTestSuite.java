@@ -1,7 +1,8 @@
 package com.kodilla.stream.array;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class ArrayAverageTestSuite {
 
@@ -20,6 +21,6 @@ public class ArrayAverageTestSuite {
         double testAverage = arrayAverage.getAverage(testArray);
 
         //then
-        Assert.assertEquals(22.5, testAverage, 0.001);
+        Assertions.assertEquals(22.5, testAverage, 0.001);
     }
 }
