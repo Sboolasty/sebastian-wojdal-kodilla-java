@@ -6,12 +6,12 @@ public class RpsRunner {
         boolean end = false;
         GameLogic gameLogic = new GameLogic();
         System.out.println("Welcome to RPS!");
-        gameLogic.NewGame();
+        gameLogic.newGame();
 
-        while (!end) {
-            gameLogic.NextMove();
+        while (!gameLogic.isGameOver()) {
+            gameLogic.nextMove();
             gameLogic.checkFinalWin();
-            end = gameLogic.isEnd();
+            end = gameLogic.isGameOver();
         }
     }
 }

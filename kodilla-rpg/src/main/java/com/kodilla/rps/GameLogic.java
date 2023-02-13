@@ -17,7 +17,7 @@ public class GameLogic {
     boolean extendedRules = false;
     String playerName = "";
     Scanner scanner = new Scanner(System.in);
-    void NewGame(){
+    void newGame(){
         wins = 0;
         losses = 0;
         currentRound = 1;
@@ -41,7 +41,7 @@ public class GameLogic {
             scanner.nextLine();
         }
     }
-    void NextMove() {
+    void nextMove() {
         System.out.println();
         System.out.println(playerName + ",enter your move");
         System.out.println("(1)rock (2)paper (3)scissors");
@@ -57,7 +57,7 @@ public class GameLogic {
             }
             case "n" -> {
                 System.out.println("Are you sure to start new game? (y/n): ");
-                if ("y".equals(scanner.nextLine())) NewGame();
+                if ("y".equals(scanner.nextLine())) newGame();
             }
 
             case "r" -> toggleRules();
@@ -125,11 +125,11 @@ public class GameLogic {
     void checkFinalWin(){
         if (wins >= rounds) {
             System.out.println("You won game vs Ai! Game took " + currentRound +" rounds");
-            NewGame();
+            newGame();
         }
         if (losses >= rounds) {
             System.out.println("You lose game vs Ai! Game took " + currentRound +" rounds");
-            NewGame();
+            newGame();
         }
     }
 
@@ -145,7 +145,7 @@ public class GameLogic {
     {
         extendedRules = !extendedRules;
     }
-    public boolean isEnd() {
+    public boolean isGameOver() {
         return end;
     }
 
