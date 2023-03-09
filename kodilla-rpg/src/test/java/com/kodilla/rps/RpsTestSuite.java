@@ -9,7 +9,7 @@ public class RpsTestSuite {
     @Test
     void testWinConditionRock() {
         //Given
-        GameLogic gameLogic = new GameLogic();
+        GameLogic; gameLogic = new GameLogic();
         gameLogic.toggleRules();
         String playerMove = MoveList.ROCK.getValue();
         String aiMove = MoveList.SCISSORS.getValue();
