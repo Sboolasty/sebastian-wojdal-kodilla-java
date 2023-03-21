@@ -1,6 +1,6 @@
 package com.example.kodillagoodpatterns.challenges.OrderingSystem;
 
-import com.example.kodillagoodpatterns.challenges.OrderingSystem.*;
+
 
 public class Main {
     public static void main(String[] args) {
