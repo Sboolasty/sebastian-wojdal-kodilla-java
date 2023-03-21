@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        FlightDatabase db = new FlightDatabase();
+        FlightSearchService db = new FlightSearchService();
         db.addFlight(new Flight("Gdańsk", "Kraków"));
         db.addFlight(new Flight("Warszawa", "Kraków"));
         db.addFlight(new Flight("Gdańsk", "Warszawa"));
