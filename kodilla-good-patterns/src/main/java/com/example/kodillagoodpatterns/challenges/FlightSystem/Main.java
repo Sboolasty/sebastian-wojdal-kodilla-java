@@ -4,17 +4,21 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        FlightSearchService db = new FlightSearchService();
-        db.addFlight(new Flight("Gdańsk", "Kraków"));
-        db.addFlight(new Flight("Warszawa", "Kraków"));
-        db.addFlight(new Flight("Gdańsk", "Warszawa"));
-        db.addFlight(new Flight("Kraków", "Poznań"));
+        FlightSearchService flightSearchService = new FlightSearchService();
 
-        List<Flight> flightsFromGdansk = db.findFlightsFrom("Gdańsk");
-        List<Flight> flightsToWroclaw = db.findFlightsTo("Wrocław");
+        Flight flight1 = new Flight("KTW", "WAW");
+        Flight flight2 = new Flight("WAW", "KRK");
+        Flight flight3 = new Flight("WAW", "LDZ");
 
-        System.out.println("Loty z Gdańska: " + flightsFromGdansk);
-        System.out.println("Loty do Krakowa: " + flightsToWroclaw);
+        flightSearchService.addFlight(flight1);
+        flightSearchService.addFlight(flight2);
+        flightSearchService.addFlight(flight3);
 
-    }
+        List<Flight> connectingFlights = flightSearchService.findConnectingFlights("KTW", "KRK", "WAW");
+
+        System.out.println("Connecting flights:");
+        for (Flight flight : connectingFlights) {
+            System.out.println(flight.getDepartureCity() + " - " + flight.getArrivalCity());
+        }
+  }
 }

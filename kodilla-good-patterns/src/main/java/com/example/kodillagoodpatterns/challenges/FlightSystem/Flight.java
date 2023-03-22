@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Flight {
     private String departureCity;
-    private String transferCity;
     private String arrivalCity;
 
     public Flight(String departureCity, String arrivalCity) {
@@ -16,22 +15,24 @@ public class Flight {
         return departureCity;
     }
 
+    public void setDepartureCity(String departureCity) {
+        this.departureCity = departureCity;
+    }
+
     public String getArrivalCity() {
         return arrivalCity;
     }
-    public String getTransferCity() {
-        return transferCity;
+
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity = arrivalCity;
     }
 
-
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof Flight)) return false;
-        Flight f = (Flight) obj;
-        return Objects.equals(departureCity, f.departureCity)
-                && Objects.equals(transferCity, f.transferCity)
-                && Objects.equals(arrivalCity, f.arrivalCity);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Flight)) return false;
+        Flight flight = (Flight) o;
+        return Objects.equals(departureCity, flight.departureCity) && Objects.equals(arrivalCity, flight.arrivalCity);
     }
 
     @Override
