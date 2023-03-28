@@ -20,5 +20,5 @@ public class Main {
         for (Flight flight : connectingFlights) {
             System.out.println(flight.getDepartureCity() + " - " + flight.getArrivalCity());
         }
-  }
+    }
 }

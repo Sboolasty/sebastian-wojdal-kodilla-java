@@ -1,4 +1,5 @@
 package com.example.kodillagoodpatterns.challenges.FlightSystem;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
