@@ -4,7 +4,7 @@ sealed class User (String userName)
     permits Millenials, YGeneration, ZGeneration {
         private SocialPublisher socialPublisher;
 
-    public User(String userName) {
+    public sealed User(String userName) {
         this.userName = userName;
     }
 
