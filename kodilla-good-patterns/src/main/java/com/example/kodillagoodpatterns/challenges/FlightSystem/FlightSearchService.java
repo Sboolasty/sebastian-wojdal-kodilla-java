@@ -36,17 +36,15 @@ public class FlightSearchService {
     }
 
     public List<Flight> findConnectingFlights(String departureCity, String arrivalCity, String connectingCity) {
-        List<Flight> departureFlights = findFlightsFrom(departureCity);
-        List<Flight> arrivalFlights = findFlightsTo(arrivalCity);
-
-        List<Flight> connectingFlights = departureFlights.stream()
-                .filter(flight -> flight.getArrivalCity().equals(connectingCity))
-                .flatMap(flight -> arrivalFlights.stream()
-                        .filter(arrivalFlight -> arrivalFlight.getDepartureCity().equals(connectingCity))
-                        .filter(arrivalFlight -> arrivalFlight.getArrivalCity().equals(arrivalCity))
-                        .map(arrivalFlight -> new Flight(flight.getDepartureCity(), arrivalFlight.getArrivalCity())))
+        List<Flight> departureToConnectingFlights = flights.stream()
+                .filter(flight -> flight.getDepartureCity().equals(departureCity) && flight.getArrivalCity().equals(connectingCity))
                 .collect(Collectors.toList());
-
+        List<Flight> connectingToArrivalFlights = flights.stream()
+                .filter(flight -> flight.getDepartureCity().equals(connectingCity) && flight.getArrivalCity().equals(arrivalCity))
+                .collect(Collectors.toList());
+        List<Flight> connectingFlights = new ArrayList<>();
+        connectingFlights.addAll(departureToConnectingFlights);
+        connectingFlights.addAll(connectingToArrivalFlights);
         return connectingFlights;
     }
 }
