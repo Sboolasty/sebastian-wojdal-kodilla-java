@@ -5,3 +5,4 @@ include 'kodilla-exception'
 include 'kodilla-rpg'
 include 'kodilla-spring'
 include 'kodilla-spring-web'
+include "kodilla-hibernate"
