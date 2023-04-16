@@ -19,11 +19,9 @@ public class InvoiceDaoTestSuite {
     @Autowired
     private InvoiceDao invoiceDao;
 
-
     @AfterEach
     public void after() {
         invoiceDao.deleteAll();
-        productDao.deleteAll();
     }
 
     @Test
@@ -32,10 +30,6 @@ public class InvoiceDaoTestSuite {
         Product product1 = new Product("Product 1");
         Product product2 = new Product("Product 2");
         Product product3 = new Product("Product 3");
-
-        productDao.save(product1);
-        productDao.save(product2);
-        productDao.save(product3);
 
         Item item1 = new Item(product1, new BigDecimal("100"), 2, new BigDecimal("200"));
         Item item2 = new Item(product2, new BigDecimal("200"), 3, new BigDecimal("600"));
@@ -55,6 +49,13 @@ public class InvoiceDaoTestSuite {
         Iterable<Invoice> invoices = invoiceDao.findAll();
         int actualInvoiceCount = 0;
         int actualItemCount = 0;
+
+        for (Invoice inv : invoices) {
+            actualInvoiceCount++;
+            for (Item item : inv.getItems()) {
+                actualItemCount++;
+            }
+        }
 
         // then
         assertEquals(expectedInvoiceCount, actualInvoiceCount);
