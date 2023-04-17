@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 public class InvoiceDaoTestSuite {
@@ -35,27 +37,24 @@ public class InvoiceDaoTestSuite {
         Item item2 = new Item(product2, new BigDecimal("200"), 3, new BigDecimal("600"));
         Item item3 = new Item(product3, new BigDecimal("50"), 5, new BigDecimal("250"));
 
-        Invoice invoice = new Invoice("INV001");
-        invoice.addItem(item1);
-        invoice.addItem(item2);
-        invoice.addItem(item3);
+        Invoice newInvoice = new Invoice("INV001");
+        newInvoice.addItem(item1);
+        newInvoice.addItem(item2);
+        newInvoice.addItem(item3);
 
 
         int expectedInvoiceCount = 1;
         int expectedItemCount = 3;
 
         // when
-        invoiceDao.save(invoice);
+        invoiceDao.save(newInvoice);
         Iterable<Invoice> invoices = invoiceDao.findAll();
         int actualInvoiceCount = 0;
         int actualItemCount = 0;
 
-        for (Invoice inv : invoices) {
-            actualInvoiceCount++;
-            for (Item item : inv.getItems()) {
-                actualItemCount++;
-            }
-        }
+        Optional<Invoice> optionalInvoice = invoiceDao.findById(newInvoice.getId());
+        assertTrue(optionalInvoice.isPresent());
+        Invoice invoice = optionalInvoice.get();
 
         // then
         assertEquals(expectedInvoiceCount, actualInvoiceCount);
