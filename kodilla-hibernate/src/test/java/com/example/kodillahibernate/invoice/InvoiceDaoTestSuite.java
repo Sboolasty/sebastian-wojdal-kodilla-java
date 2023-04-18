@@ -1,22 +1,16 @@
 package com.example.kodillahibernate.invoice;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
 import java.math.BigDecimal;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 public class InvoiceDaoTestSuite {
-
-    @Autowired
-    private ProductDao productDao;
 
     @Autowired
     private InvoiceDao invoiceDao;
@@ -42,21 +36,14 @@ public class InvoiceDaoTestSuite {
         newInvoice.addItem(item2);
         newInvoice.addItem(item3);
 
-
-        int expectedInvoiceCount = 1;
-        int expectedItemCount = 3;
-
         // when
         invoiceDao.save(newInvoice);
 
+        // then
         Optional<Invoice> optionalInvoice = invoiceDao.findById(newInvoice.getId());
         assertTrue(optionalInvoice.isPresent());
         Invoice invoice = optionalInvoice.get();
+        assertEquals(3, invoice.getItems().size());
 
-        int actualInvoiceCount = 1;
-        int actualItemCount = invoice.getItems().size();
-        // then
-        assertEquals(expectedInvoiceCount, actualInvoiceCount);
-        assertEquals(expectedItemCount, actualItemCount);
     }
 }

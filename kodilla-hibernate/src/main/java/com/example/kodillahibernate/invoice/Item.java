@@ -14,6 +14,7 @@ public class Item {
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
+    private Invoice invoice;
 
     public Item(Product product1, BigDecimal bigDecimal, int i, BigDecimal decimal) {
     }
@@ -24,16 +25,11 @@ public class Item {
         this.quantity = quantity;
         this.value = price.multiply(BigDecimal.valueOf(quantity));
     }
-    @Id
-    @GeneratedValue
-    @Column(name = "ITEM_ID", unique = true)
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INVOICE_ID")
-    private Invoice invoice;
-
-    public Item() {
-
+    public Invoice getInvoice(){
+        return invoice;
     }
 
     @Id
@@ -65,6 +61,7 @@ public class Item {
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }
+
     @NotNull
     @Column(name = "VALUE")
     public BigDecimal getValue() {
@@ -85,6 +82,7 @@ public class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        this.value = price.multiply(BigDecimal.valueOf(quantity));
     }
 
     private void setValue(BigDecimal value) {
