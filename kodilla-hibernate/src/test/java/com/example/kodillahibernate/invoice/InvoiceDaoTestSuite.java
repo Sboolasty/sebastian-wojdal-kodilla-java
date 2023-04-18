@@ -48,14 +48,13 @@ public class InvoiceDaoTestSuite {
 
         // when
         invoiceDao.save(newInvoice);
-        Iterable<Invoice> invoices = invoiceDao.findAll();
-        int actualInvoiceCount = 0;
-        int actualItemCount = 0;
 
         Optional<Invoice> optionalInvoice = invoiceDao.findById(newInvoice.getId());
         assertTrue(optionalInvoice.isPresent());
         Invoice invoice = optionalInvoice.get();
 
+        int actualInvoiceCount = 1;
+        int actualItemCount = invoice.getItems().size();
         // then
         assertEquals(expectedInvoiceCount, actualInvoiceCount);
         assertEquals(expectedItemCount, actualItemCount);
