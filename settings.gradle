@@ -6,3 +6,5 @@ include 'kodilla-rpg'
 include 'kodilla-spring'
 include 'kodilla-spring-web'
 include "kodilla-hibernate"
+include "kodilla-goodpatterns"
+include "kodilla-goodpatterns2"

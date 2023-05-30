@@ -10,6 +10,10 @@ import java.util.List;
         @NamedQuery(
                 name = "Company.retrieveCompanyWhereNameStartsWith",
                 query = "from Company where name like CONCAT(:COMPANYNAME,'__%')"
+        ),
+        @NamedQuery(
+                name = "Company.retrieveCompanyWhereNameContains",
+                query = "from Company where name like CONCAT('%',:COMPANYNAME,'%')"
         )
 })
 @NamedNativeQuery(

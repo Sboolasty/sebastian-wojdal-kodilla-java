@@ -1,6 +1,7 @@
 package com.example.kodillahibernate.manytomany.dao;
 
 
+
 import com.example.kodillahibernate.manytomany.Company;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,4 +18,6 @@ public interface CompanyDao extends CrudRepository<Company, Integer> {
     List<Company> retrieveCompanyWhereNameStartsWith(@Param("COMPANYNAME") String companyName);
     @Query(nativeQuery = true)
     List<Company> retrieveCompanyWhereNameStartsWithNative(@Param("COMPANYNAME") String companyName);
+    @Query
+    List<Company> retrieveCompanyWhereNameContains(@Param("COMPANYNAME") String companyName);
 }
