@@ -8,3 +8,5 @@ include 'kodilla-spring-web'
 include "kodilla-hibernate"
 include "kodilla-good-patterns"
 include "kodilla-goodpatterns2"
+include 'kodilla-testing2'
+
